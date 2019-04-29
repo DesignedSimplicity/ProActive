@@ -14,14 +14,15 @@ namespace ProActive.App
 {
     public partial class Main : Form
     {
+        private Engine _engine;
         public Main()
         {
             InitializeComponent();
 
-
             cmdLoad.Click += LoadPath;
             lstVideos.SelectedIndexChanged += SelectedVideos;
 
+            _engine = new Engine(lstVideos, lstThumbs, imgThumbs);
 
             StartDebug();
         }
@@ -34,50 +35,22 @@ namespace ProActive.App
 
         private void SelectedVideos(object sender, EventArgs e)
         {
-            lstThumbs.Clear();
-            imgThumbs.Images.Clear();
-           
-
-            var thumbs = new ParseVideo();
+            var list = new List<ListViewItem>();
             foreach (ListViewItem item in lstVideos.SelectedItems)
             {
-                var video = (GoProVideo)item.Tag;
-                var thumb = thumbs.ExtractThumbnail(video.File.FullName);
-                imgThumbs.Images.Add(video.Name, thumb);
-                lstThumbs.Items.Add(new ListViewItem()
-                {
-                    ImageKey = video.Name
-                });
+                list.Add(item);
             }
-            
-        }        
+            _engine.SelectSourceVideos(list);
+        }
 
         private void LoadPath(object sender, EventArgs e)
         {
-            lstVideos.Items.Clear();
-            lstVideos.Groups.Clear();
-
             var pathUri = txtPath.Text;
             if (Directory.Exists(pathUri))
             {
                 var fs = new FileSystem();
                 var videos = fs.LoadVideos(pathUri);
-                foreach(var video in videos)
-                {
-                    var group = lstVideos.Groups[video.Group];
-                    if (group == null)
-                    {
-                        group = lstVideos.Groups.Add(video.Group, video.Group);
-                    }
-
-                    var videoItem = new ListViewItem();
-                    videoItem.Tag = video;
-                    videoItem.Checked = true;
-                    videoItem.Group = group;
-                    videoItem.Text = video.Name;
-                    videoItem.Name = video.File.FullName;
-                    lstVideos.Items.Add(videoItem);
-                }
+                _engine.ShowSourceVideos(videos);
             }
         }
     }
