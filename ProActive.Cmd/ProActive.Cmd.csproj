@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProActive.Lib\ProActive.Lib.csproj">
-      <Project>{c27ae670-bb01-4892-bc53-a60f5acfeeb0}</Project>
+      <Project>{3800d7b3-e766-4d96-beb6-698668b816b2}</Project>
       <Name>ProActive.Lib</Name>
     </ProjectReference>
   </ItemGroup>

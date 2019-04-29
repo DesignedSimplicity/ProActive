@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProActive.App")]
+[assembly: AssemblyTitle("ProActive.Lib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ProActive.App")]
+[assembly: AssemblyProduct("ProActive.Lib")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f048fbb0-12df-45ca-8a9b-4afa38c23719")]
+[assembly: Guid("3800d7b3-e766-4d96-beb6-698668b816b2")]
 
 // Version information for an assembly consists of the following four values:
 //
