@@ -5,11 +5,16 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProActive.App", "ProActive.App\ProActive.App.csproj", "{B6FC9F77-01BC-406A-B153-54726CD9620C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProActive.Lib", "ProActive.Lib\ProActive.Lib.csproj", "{C27AE670-BB01-4892-BC53-A60F5ACFEEB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProActive.Lib", "ProActive.Lib\ProActive.Lib.csproj", "{C27AE670-BB01-4892-BC53-A60F5ACFEEB0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProActive.Cmd", "ProActive.Cmd\ProActive.Cmd.csproj", "{C98B6FAD-0C97-40CC-A54B-2E37B969695B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProActive.Test", "ProActive.Test\ProActive.Test.csproj", "{28F0C800-4B19-4EE3-8910-A1857E4C77D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{ACF7AEBC-D996-4FCC-814F-A93FC27D45D2}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
