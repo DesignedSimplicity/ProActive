@@ -22,7 +22,14 @@ namespace ProActive.App
             cmdLoad.Click += LoadPath;
             lstVideos.SelectedIndexChanged += SelectedVideos;
 
-            _engine = new Engine(lstVideos, lstThumbs, imgThumbs);
+            _engine = new Engine(
+                lstVideos, 
+                lstThumbs, 
+                imgThumbs,
+                txtTitle,
+                txtTimestamp,
+                lstMetadata
+                );
 
             StartDebug();
         }
@@ -38,7 +45,10 @@ namespace ProActive.App
             var list = new List<ListViewItem>();
             foreach (ListViewItem item in lstVideos.SelectedItems)
             {
-                list.Add(item);
+                if (item.Checked)
+                {
+                    list.Add(item);
+                }
             }
             _engine.SelectSourceVideos(list);
         }

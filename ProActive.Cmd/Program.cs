@@ -29,8 +29,9 @@ namespace ProActive.Cmd
 
             videoUri = videoUri.Trim('"');
 
+            new ParseVideo().ExtractMetadata(videoUri);
             //new ParseVideo().PrintMetadata(videoUri);
-            new ParseVideo().CreateThumbnail(videoUri);
+            //new ParseVideo().CreateThumbnail(videoUri);
         }
     }
 }
