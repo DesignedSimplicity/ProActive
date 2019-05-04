@@ -14,7 +14,7 @@ namespace ProActive.Cmd
         {
             var videoUri = "";
 
-            videoUri = @"E:\_GoPro\20190212-QueenstownBike2\GH010134.MP4";
+            videoUri = @"D:\___ProActive\20181129 - Hyperlapse Depart GH010008 1080p10x.MP4";
 
             if (args != null && args.Length > 0)
             {
@@ -29,9 +29,10 @@ namespace ProActive.Cmd
 
             videoUri = videoUri.Trim('"');
 
-            new ParseVideo().ExtractMetadata(videoUri);
-            //new ParseVideo().PrintMetadata(videoUri);
+            //new ParseVideo().ExtractMetadata(videoUri);
+            new ParseVideo().PrintMetadata(videoUri);
             //new ParseVideo().CreateThumbnail(videoUri);
+            Console.ReadKey();
         }
     }
 }
