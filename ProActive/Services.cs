@@ -57,7 +57,6 @@ namespace ProActive
             }
         }
 
-
         private GoProVideoInfo ExtractMetadata(string videoUri)
         {
             var data = new GoProVideoInfo();
@@ -122,11 +121,5 @@ namespace ProActive
             var longitude = location.Substring(split).TrimEnd(new char[] { '/', ';' });
             return Convert.ToDecimal(longitude);
         }
-
-        public void DebugMetadata(string videoUri)
-        {
-            
-        }
-
     }
 }

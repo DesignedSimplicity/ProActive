@@ -24,7 +24,10 @@ namespace ProActive
             txtDate.KeyPress += TextEdited;
             txtTags.KeyPress += TextEdited;
 
+            lblPath.Click += PickPath;
             cmdPath.Click += LoadPath;
+            txtPath.KeyPress += EnterPath;
+            cmdProcess.Click += ProcessBatch;
             cmdLocation.Click += ShowLocation;
             trackBar.ValueChanged += ShowThumbnail;
             lstVideos.SelectedIndexChanged += SelectedVideos;
@@ -39,11 +42,41 @@ namespace ProActive
             _interface.TrackBar = trackBar;
             _interface.PictureBox = picBox;
 
-            StartDebug();
+            // DEBUG HACK
+            txtPath.Text = @"D:\___ProActive";
+            RefreshPath();
+        }
+
+        private void ProcessBatch(object sender, EventArgs e)
+        {
+            var batch = new Batch();
+            batch.LoadBatch(_interface.PrepareBatch());
+            batch.ShowDialog(this);
+        }
+
+        private void EnterPath(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                LoadPath(sender, e);
+            }
+        }
+
+        private void PickPath(object sender, EventArgs e)
+        {
+            var folder = new FolderBrowserDialog();
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                txtPath.Text = folder.SelectedPath;
+                LoadPath(sender, e);
+            }
         }
 
         private void TextEdited(object sender, KeyPressEventArgs e)
         {
+            // todo - toggle dirty
+            var txt = (TextBox)sender;
+            txt.BackColor = Color.LightYellow;
             if (e.KeyChar == (char)13)
             {
                 _interface.SaveChanges();
@@ -64,12 +97,6 @@ namespace ProActive
             System.Diagnostics.Process.Start(url);
         }
 
-        private void StartDebug()
-        {
-            txtPath.Text = @"D:\___ProActive";
-            LoadPath(null, null);
-        }
-
         private void SelectedVideos(object sender, EventArgs e)
         {
             if (lstVideos.SelectedItems.Count == 0)
@@ -84,11 +111,16 @@ namespace ProActive
 
         private void LoadPath(object sender, EventArgs e)
         {
-            var pathUri = txtPath.Text;
+            RefreshPath();
+        }
+
+        public void RefreshPath()
+        {
+            var pathUri = txtPath.Text.Trim();
             if (Directory.Exists(pathUri))
             {
                 var videos = new List<GoProVideo>();
-                foreach(var file in _services.FindVideos(pathUri))
+                foreach (var file in _services.FindVideos(pathUri))
                 {
                     videos.Add(_services.LoadVideo(file, true));
                 }

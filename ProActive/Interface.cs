@@ -37,6 +37,10 @@ namespace ProActive
                 _selectedSet.Title = Title.Text;
                 _selectedSet.Date = Date.Text;
                 _selectedSet.Tags = Tags.Text;
+
+                Title.BackColor = SystemColors.Window;
+                Date.BackColor = SystemColors.Window;
+                Tags.BackColor = SystemColors.Window;
             }
         }
 
@@ -67,6 +71,7 @@ namespace ProActive
                 videoItem.Group = group;
                 videoItem.Text = video.Name;
                 videoItem.Name = video.File.FullName;
+                videoItem.ToolTipText = $"Duration: {video.Info.Duration.Hours} h {video.Info.Duration.Minutes} m {video.Info.Duration.Seconds} s";
 
                 videoItem.ImageKey = video.Name;
                 ImageList.Images.Add(videoItem.ImageKey,
@@ -91,6 +96,10 @@ namespace ProActive
             if (group == null)
             {
                 _selectedSet = null;
+
+                Title.BackColor = SystemColors.Window;
+                Date.BackColor = SystemColors.Window;
+                Tags.BackColor = SystemColors.Window;
 
                 Title.Text = "";
                 Date.Text = "";
@@ -151,6 +160,31 @@ namespace ProActive
                     Location.Text = $"{info.Latitude.Value.ToString("0.0000")}x{info.Longitude.Value.ToString("0.0000")}";
                 }
             }
+        }
+
+        public ProActiveBatch PrepareBatch()
+        {
+            var batch = new ProActiveBatch();
+            foreach (ListViewItem item in VideoList.Items)
+            {
+                var video = (GoProVideo)item.Tag;
+                
+                if (item.Checked)
+                {
+                    if (!batch.Queue.ContainsKey(video.Group))
+                    {
+                        batch.Queue.Add(video.Group, new ProActiveSet());
+                    }
+                    var batchSet = batch.Queue[video.Group];
+                    batchSet.GoProSet = (GoProSet)item.Group.Tag;
+                    batchSet.Videos.Add(video);
+                }
+                else
+                {
+                    batch.Exclude.Add(video);
+                }
+            }
+            return batch;
         }
     }
 }

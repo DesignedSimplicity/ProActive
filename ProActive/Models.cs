@@ -8,6 +8,18 @@ using System.Threading.Tasks;
 
 namespace ProActive
 {
+    public class ProActiveBatch
+    {
+        public Dictionary<string, ProActiveSet> Queue { get; set; } = new Dictionary<string, ProActiveSet>();
+        public List<GoProVideo> Exclude { get; set; } = new List<GoProVideo>();
+    }
+
+    public class ProActiveSet
+    {
+        public GoProSet GoProSet { get; set; }
+        public List<GoProVideo> Videos { get; set; } = new List<GoProVideo>();
+    }
+
     public class GoProSet
     {
         public string Date { get; set; }
