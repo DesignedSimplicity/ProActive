@@ -242,6 +242,7 @@
             this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar.Enabled = false;
+            this.trackBar.LargeChange = 1;
             this.trackBar.Location = new System.Drawing.Point(7, 566);
             this.trackBar.Name = "trackBar";
             this.trackBar.Size = new System.Drawing.Size(569, 45);

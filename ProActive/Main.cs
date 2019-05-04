@@ -20,6 +20,10 @@ namespace ProActive
         {
             InitializeComponent();
 
+            txtTitle.KeyPress += TextEdited;
+            txtDate.KeyPress += TextEdited;
+            txtTags.KeyPress += TextEdited;
+
             cmdPath.Click += LoadPath;
             cmdLocation.Click += ShowLocation;
             trackBar.ValueChanged += ShowThumbnail;
@@ -33,14 +37,24 @@ namespace ProActive
             _interface.Meta = lstMeta;
             _interface.Location = cmdLocation;
             _interface.TrackBar = trackBar;
+            _interface.PictureBox = picBox;
 
             StartDebug();
         }
 
+        private void TextEdited(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                _interface.SaveChanges();
+            }
+        }
+
         private void ShowThumbnail(object sender, EventArgs e)
         {
-            var videoUri = lstVideos.SelectedItems[0].Name;
-            var thumb = _services.LoadThumb(videoUri, trackBar.Value);
+            var videoUri = trackBar.Tag.ToString();
+            var thumb = _services.LoadThumb(videoUri, trackBar.Value * 60);
+            if (picBox.Image != null) picBox.Image.Dispose();
             picBox.Image = thumb;
         }
 
@@ -58,10 +72,8 @@ namespace ProActive
 
         private void SelectedVideos(object sender, EventArgs e)
         {
-            var list = new List<ListViewItem>();
             if (lstVideos.SelectedItems.Count == 0)
             {
-                // clear list
                 _interface.SelectGroup(null);
             }
             else

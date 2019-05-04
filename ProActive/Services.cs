@@ -50,8 +50,7 @@ namespace ProActive
         public Image LoadThumb(string videoUri, float? frameTime = null)
         {
             var extract = new FFMpegConverter();
-            using (
-            var stream = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
                 extract.GetVideoThumbnail(videoUri, stream, frameTime);
                 return Image.FromStream(stream);

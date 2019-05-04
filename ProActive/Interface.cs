@@ -18,6 +18,9 @@ namespace ProActive
         public ListBox Meta { get; set; }
         public Button Location { get; set; }
         public TrackBar TrackBar { get; set; }
+        public PictureBox PictureBox { get; set; }
+
+        private GoProSet _selectedSet = null;
 
         private string BuildTags(GoProVideoInfo info)
         {
@@ -25,6 +28,16 @@ namespace ProActive
             tags += Math.Round(info.FrameRate, 0).ToString("00");
             //tags += info.CodecName;
             return tags;
+        }
+
+        public void SaveChanges()
+        {
+            if (_selectedSet != null)
+            {
+                _selectedSet.Title = Title.Text;
+                _selectedSet.Date = Date.Text;
+                _selectedSet.Tags = Tags.Text;
+            }
         }
 
         public void ShowVideos(List<GoProVideo> videos)
@@ -67,9 +80,18 @@ namespace ProActive
 
         public void SelectGroup(ListViewGroup group)
         {
+            // clear list
+            if (PictureBox.Image != null)
+            {
+                PictureBox.Image.Dispose();
+                PictureBox.Image = null;
+            }
+
             Meta.Items.Clear();
             if (group == null)
             {
+                _selectedSet = null;
+
                 Title.Text = "";
                 Date.Text = "";
                 Tags.Text = "";
@@ -89,10 +111,10 @@ namespace ProActive
             }
             else
             {
-                var videoSet = (GoProSet)group.Tag;
-                Title.Text = videoSet.Title;
-                Date.Text = videoSet.Date;
-                Tags.Text = videoSet.Tags;
+                _selectedSet = (GoProSet)group.Tag;
+                Title.Text = _selectedSet.Title;
+                Date.Text = _selectedSet.Date;
+                Tags.Text = _selectedSet.Tags;
 
                 GoProVideoInfo info = null;
                 var duration = TimeSpan.FromTicks(0);
@@ -104,7 +126,12 @@ namespace ProActive
                     {
                         var video = (GoProVideo)item.Tag;
                         duration += video.Info.Duration;
-                        if (info == null) info = video.Info;
+                        if (info == null)
+                        {
+                            info = video.Info;
+                            TrackBar.Tag = video.File.FullName;
+                            PictureBox.Image = (Image)video.Thumbnail.Clone();
+                        }
                     }
                 }
 
@@ -112,7 +139,7 @@ namespace ProActive
                 if (info != null)
                 {
                     TrackBar.Enabled = true;
-                    TrackBar.Maximum = Convert.ToInt32(info.Duration.TotalMinutes);
+                    TrackBar.Maximum = Convert.ToInt32(Math.Floor(info.Duration.TotalMinutes));
                     Meta.Items.Add($"Resolution:\t{info.Width}x{info.Height}");
                     Meta.Items.Add($"Compression:\t{info.FrameRate.ToString("0.0")} FPS {info.CodecName}");
                     Meta.Items.Add($"Firmware:\t\t{info.Firmware}");
