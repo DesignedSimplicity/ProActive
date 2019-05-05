@@ -41,10 +41,6 @@ namespace ProActive
             _interface.Location = cmdLocation;
             _interface.TrackBar = trackBar;
             _interface.PictureBox = picBox;
-
-            // DEBUG HACK
-            txtPath.Text = @"D:\___ProActive";
-            RefreshPath();
         }
 
         private void ProcessBatch(object sender, EventArgs e)

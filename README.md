@@ -1,4 +1,5 @@
-# ProActive
+![ProActive](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/ProActive/Images/logo.png)
+
 **Simple GoPro file management application**
 
 The filename pattern has changed with the newest GoPro models which causes them to be displayed in an undesirable order in a file explorer making it difficult to view and rename segmented files.

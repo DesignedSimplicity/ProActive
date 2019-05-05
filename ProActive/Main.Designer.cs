@@ -34,6 +34,8 @@
             this.lblPath = new System.Windows.Forms.ToolStripLabel();
             this.txtPath = new System.Windows.Forms.ToolStripTextBox();
             this.cmdPath = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmdProcess = new System.Windows.Forms.ToolStripButton();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.lstVideos = new System.Windows.Forms.ListView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -47,8 +49,6 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.grpTitle = new System.Windows.Forms.GroupBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.cmdProcess = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -95,6 +95,19 @@
             this.cmdPath.Name = "cmdPath";
             this.cmdPath.Size = new System.Drawing.Size(53, 22);
             this.cmdPath.Text = "Load";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // cmdProcess
+            // 
+            this.cmdProcess.Image = ((System.Drawing.Image)(resources.GetObject("cmdProcess.Image")));
+            this.cmdProcess.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cmdProcess.Name = "cmdProcess";
+            this.cmdProcess.Size = new System.Drawing.Size(100, 22);
+            this.cmdProcess.Text = "Process Batch";
             // 
             // splitContainer
             // 
@@ -155,10 +168,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picBox.BackColor = System.Drawing.Color.Black;
+            this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picBox.ErrorImage = null;
+            this.picBox.Image = ((System.Drawing.Image)(resources.GetObject("picBox.Image")));
+            this.picBox.InitialImage = null;
             this.picBox.Location = new System.Drawing.Point(7, 219);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(569, 363);
-            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBox.TabIndex = 5;
             this.picBox.TabStop = false;
             // 
@@ -244,19 +261,6 @@
             this.txtTitle.Size = new System.Drawing.Size(569, 20);
             this.txtTitle.TabIndex = 0;
             // 
-            // cmdProcess
-            // 
-            this.cmdProcess.Image = ((System.Drawing.Image)(resources.GetObject("cmdProcess.Image")));
-            this.cmdProcess.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cmdProcess.Name = "cmdProcess";
-            this.cmdProcess.Size = new System.Drawing.Size(100, 22);
-            this.cmdProcess.Text = "Process Batch";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +268,7 @@
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.toolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProActive";

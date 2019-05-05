@@ -139,6 +139,7 @@ namespace ProActive
                         {
                             info = video.Info;
                             TrackBar.Tag = video.File.FullName;
+                            PictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                             PictureBox.Image = (Image)video.Thumbnail.Clone();
                         }
                     }
