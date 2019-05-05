@@ -1,4 +1,4 @@
-![ProActive](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/ProActive/Images/logo.png)
+![ProActive](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/ProActive/Images/Logo.png)
 
 **Simple GoPro file management application**
 
