@@ -102,7 +102,9 @@
     <Content Include="Images\Camera.png" />
     <Content Include="Images\Icon.ico" />
     <Content Include="Images\Icon.png" />
+    <Content Include="Images\Load.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Process.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
