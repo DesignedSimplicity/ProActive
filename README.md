@@ -2,20 +2,21 @@
 
 **Simple GoPro file management application**
 
+The filename pattern has changed with the newest GoPro models which causes them to be displayed in an undesirable order in a file explorer making it difficult to view and rename segmented files.
+This utility streamlines the process of grouping and renaming segmented video files.
+
+# Workflow
 1. Loads all video files in a folder
 1. Groups segmented videos in list view
 1. Displays metadata for each video file
 1. Edit seperate fields used to build name
 1. Batch process all videos to new filename
 
-The filename pattern has changed with the newest GoPro models which causes them to be displayed in an undesirable order in a file explorer making it difficult to view and rename segmented files.
-This utility streamlines the process of grouping and renaming segmented video files.
-
 # Before
-![Loaded](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/Screens/Files-Before.png)
+![Before](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/Screens/Files-Before.png)
 
 # After
-![Loaded](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/Screens/Files-After.png)
+![After](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/Screens/Files-After.png)
 
 # Instructions
 ## Launch Application
@@ -43,5 +44,4 @@ This utility streamlines the process of grouping and renaming segmented video fi
 1. After clicking Process both the Batch screen and the main form will be refreshed showing you the result.
 ![Loaded](https://raw.githubusercontent.com/DesignedSimplicity/ProActive/master/Screens/Process-Completed.png)
 
-**Your source files will be renamed in the same directory you loaded them from using the following pattern.**
-`Date Title OrigionalFileName Tags`
+**Your videos will be renamed in source directory using the following pattern: ** `Date Title OrigionalFileName Tags`
