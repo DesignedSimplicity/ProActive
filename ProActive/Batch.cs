@@ -58,14 +58,15 @@ namespace ProActive
         {
             lstBatch.BeginUpdate();
             lstBatch.Items.Clear();
+			var index = 1;
             foreach (var batchItem in batch.Queue.Values)
             {
                 var batchSet = batchItem.GoProSet;
                 foreach(var video in batchItem.Videos)
                 {
-                    var rename = $"{batchSet.Date} {batchSet.Title} {video.Name} {batchSet.Tags}";
+                    var rename = $"{batchSet.Date} - {index++} {batchSet.Title} {video.Name} {batchSet.Tags}";
 
-                    var item = new ListViewItem();
+					var item = new ListViewItem();
                     item.Tag = rename;
                     item.Name = video.File.FullName;
                     item.Text = video.Name;
